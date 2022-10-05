@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateChangeStartDateColumnToWorkAndSchoolsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class UpdateChangeStartDateColumnToWorkAndSchoolsTable extends Migration
      */
     public function up()
     {
-        Schema::table('work_and_schools', function (Blueprint $table) {
-            $table->timestamp('start_date')->change();
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->string('path');
+            $table->string('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class UpdateChangeStartDateColumnToWorkAndSchoolsTable extends Migration
      */
     public function down()
     {
-        Schema::table('work_and_schools', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('images');
     }
 }
