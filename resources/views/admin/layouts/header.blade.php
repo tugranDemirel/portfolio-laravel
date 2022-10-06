@@ -45,10 +45,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="pages/medias/carousel.html">Proje Listesi</a>
+                            <a href="{{ route('admin.project.index') }}">Proje Listesi</a>
                         </li>
                         <li>
-                            <a href="pages/medias/content-slider.html">Proje Ekle</a>
+                            <a href="{{ route('admin.project.create') }}">Proje Ekle</a>
                         </li>
                     </ul>
                 </li>
