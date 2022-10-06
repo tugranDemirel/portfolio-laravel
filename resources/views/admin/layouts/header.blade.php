@@ -2,7 +2,7 @@
         <nav class="sidebar-nav">
             <ul class="metismenu">
                 <li>
-                    <a href="javascript:void(0);" class="">
+                    <a href="{{ route('home') }}" class="">
                         <i class="material-icons">dashboard</i>
                         <span class="nav-label">Anasayfa</span>
                     </a>
@@ -31,10 +31,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="pages/tables/normal-tables.html">Skil Listesi</a>
+                            <a href="{{ route('admin.skills.index') }}">Skil Listesi</a>
                         </li>
                         <li>
-                            <a href="pages/tables/jquery-datatables.html">Skil Ekle</a>
+                            <a href="{{ route('admin.skills.create') }}">Skil Ekle</a>
                         </li>
                     </ul>
                 </li>

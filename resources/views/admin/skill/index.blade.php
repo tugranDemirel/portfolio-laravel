@@ -11,33 +11,40 @@
                         <tr>
                             <th>#</th>
                             <th>Ad</th>
-                            <th>Type</th>
                             <th>Başlama Tarihi</th>
-                            <th>Bitiş Tarihi</th>
+                            <th>Progress Bar</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($schools as $school)
+                        @if($skills->count() > 0)
+                        @foreach($skills as $skill)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $school->name }}</td>
+                                <td>{{ $skill->name }}</td>
+                                <td>{{ date_format($skill->start_date, 'd-m-Y') }}</td>
                                 <td>
-                                    <label class="label label-warning">Not Started</label>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: {{ $skill->level }}%">
+                                            {{$skill->level}}%</div>
+                                    </div>
                                 </td>
-                                <td>{{ date_format($school->start_date, 'd-m-Y') }}</td>
-                                <td>{{ date_format($school->end_date, 'd-m-Y') }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('admin.workandschool.edit', ['type' => $school]) }}" style="margin-right: 5px;" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                        <button type="button" onclick="event.preventDefault(); document.getElementById('delete-school').submit();" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <a href="{{ route('admin.skills.edit', ['type' => $skill]) }}" style="margin-right: 5px;" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <button type="button" onclick="event.preventDefault(); document.getElementById('delete-skill').submit();" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </div>
-                                    <form id="delete-school" action="{{ route('admin.workandschool.delete', ['type' => $school->id]) }}" method="POST" class="d-none">
+                                    <form id="delete-skill" action="{{ route('admin.skills.delete', ['type' => $skill->id]) }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </td>
                             </tr>
                         @endforeach
+                        @else
+                            <tr>
+                                <td colspan="5" class="text-center">Hiçbir veri bulunamadı.</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
