@@ -59,10 +59,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="pages/blog/single-post.html">Blog Listesi</a>
+                            <a href="{{ route('admin.blog.index') }}">Blog Listesi</a>
                         </li>
                         <li>
-                            <a href="pages/blog/posts.html">Blog Ekle</a>
+                            <a href="{{ route('admin.blog.create') }}">Blog Ekle</a>
                         </li>
                     </ul>
                 </li>

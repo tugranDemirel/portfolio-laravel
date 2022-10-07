@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\WorkAndSchool\WorkAndSchoolController;
 use App\Http\Controllers\Admin\Skill\SkillController;
 use App\Http\Controllers\Admin\Project\ProjectController;
+use App\Http\Controllers\Admin\Blog\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function (){
         Route::post('/update/{type}', [ProjectController::class, 'update'])->name('admin.project.update');
         Route::post('/delete/{type}', [ProjectController::class, 'destroy'])->name('admin.project.delete');
         Route::post('/image', [ProjectController::class, 'imageDestroy'])->name('admin.project.image.delete');
+    });
+    Route::prefix('blogs')->group(function (){
+        Route::get('/', [BlogController::class, 'index'])->name('admin.blog.index');
+        Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/store', [BlogController::class, 'store'])->name('admin.blog.store');
+        Route::get('/edit/{type}', [BlogController::class, 'edit'])->name('admin.blog.edit');
+        Route::post('/update/{type}', [BlogController::class, 'update'])->name('admin.blog.update');
+        Route::post('/delete/{type}', [ProjectController::class, 'destroy'])->name('admin.project.delete');
+        Route::post('/upload', [BlogController::class, 'imageUpload'])->name('admin.blog.image.upload');
     });
 
 });
