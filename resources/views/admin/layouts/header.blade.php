@@ -73,7 +73,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="pages/mailbox/inbox.html">Abone Listesi</a>
+                            <a href="{{ route('admin.contact.index') }}">İletişim Listesi</a>
                         </li>
                     </ul>
                 </li>

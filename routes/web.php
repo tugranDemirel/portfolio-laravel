@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\WorkAndSchool\WorkAndSchoolController;
 use App\Http\Controllers\Admin\Skill\SkillController;
 use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\Admin\Blog\BlogController;
+use App\Http\Controllers\Admin\Contact\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,25 @@ Route::middleware(['auth'])->prefix('admin')->group(function (){
         Route::post('/update/{type}', [BlogController::class, 'update'])->name('admin.blog.update');
         Route::post('/delete/{type}', [ProjectController::class, 'destroy'])->name('admin.project.delete');
         Route::post('/upload', [BlogController::class, 'imageUpload'])->name('admin.blog.image.upload');
+    });
+    Route::prefix('blogs')->group(function (){
+        Route::get('/', [BlogController::class, 'index'])->name('admin.blog.index');
+        Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/store', [BlogController::class, 'store'])->name('admin.blog.store');
+        Route::get('/edit/{type}', [BlogController::class, 'edit'])->name('admin.blog.edit');
+        Route::post('/update/{type}', [BlogController::class, 'update'])->name('admin.blog.update');
+        Route::post('/delete/{type}', [ProjectController::class, 'destroy'])->name('admin.project.delete');
+        Route::post('/upload', [BlogController::class, 'imageUpload'])->name('admin.blog.image.upload');
+    });
+
+    Route::prefix('contact')->group(function (){
+        Route::get('/', [ContactController::class, 'index'])->name('admin.contact.index');
+        Route::get('/show/{id}', [ContactController::class, 'show'])->name('admin.contact.show');
+        Route::get('/important', [ContactController::class, 'important'])->name('admin.contact.important');
+        Route::get('/read-receipt', [ContactController::class, 'readReceipt'])->name('admin.contact.read');
+        Route::post('/delete/{id}', [ContactController::class, 'destroy'])->name('admin.contact.delete');
+        Route::post('/alldelete', [ContactController::class, 'destroyAll'])->name('admin.contact.allDelete');
+        Route::post('/star/', [ContactController::class, 'changeStar'])->name('admin.contact.changeStar');
     });
 
 });
