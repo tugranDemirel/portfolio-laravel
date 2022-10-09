@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Skill\SkillController;
 use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\Admin\Contact\ContactController;
+use App\Http\Controllers\Admin\Subscriber\SubscriberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,4 +83,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function (){
         Route::post('/star/', [ContactController::class, 'changeStar'])->name('admin.contact.changeStar');
     });
 
+    Route::prefix('subscribers')->group(function (){
+        Route::get('/', [SubscriberController::class, 'index'])->name('admin.subscriber.index');
+    });
 });

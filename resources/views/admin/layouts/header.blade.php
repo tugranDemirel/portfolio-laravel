@@ -84,7 +84,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="pages/miscellaneous/contacts/contact-detail.html">Abone Listesi</a>
+                            <a href="{{ route('admin.subscriber.index') }}">Abone Listesi</a>
                         </li>
                     </ul>
                 </li>
