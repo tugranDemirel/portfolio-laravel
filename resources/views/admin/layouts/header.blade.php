@@ -89,7 +89,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="">
+                    <a href="{{ route('admin.setting.index') }}" class="">
                         <i class="material-icons">settings</i>
                         <span class="nav-label">Site Ayarları</span>
                     </a>
